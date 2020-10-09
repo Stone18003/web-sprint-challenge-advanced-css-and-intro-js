@@ -205,20 +205,29 @@ Create a function called `getArtistByIndex` that takes two arguments:
  * For example, if getArtistByIndex is invoked with the artists dataset and the number 0,
  * it will return `The artist at index 0 is Amedeo Modigliani`.
 */
-function getArtistByIndex(artists, index) {
-    /*Your Code Here*/
+function getArtistByIndex(arr, index) {
+    let artists = arr[index];
+    return `the artist at index ${artists.id} is ${artists.name}`
 }
 
-
+console.log(getArtistByIndex(artists, 0));
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 4: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
 Create a function called get20s() that takes data as an argument and returns an array with names of artists who were born in and died in 20th century (1900-2000) example born in 1901 and died in 1959 - included / born in 1889 and died in 1925 not included - should return ["Salvador Dali", "Frida Kahlo"]*/
 
-function get20s( /*Your Code Here*/ ) {
-    /*Your Code Here*/
+function get20s(arr) {
+    let diedIn20s = [];
+    for (let index = 0; index < arr.length; index++) {
+        const element = arr[index];
+        if (element.years >= 1900 && element.years <= 2000) {
+            diedIn20s.push(element.name);
+        }
+
+    }
+    return diedIn20s;
 }
 
-
+console.log(JSON.stringify(get20s(artists)));
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
 Create a function called `removeArtist` that takes two arguments:
@@ -231,10 +240,12 @@ Create a function called `removeArtist` that takes two arguments:
  * 
  * Note that sucessfully invoking this function multiple times without refreshing your browser will continuously remove artists from the array until there are none left. If you refresh your browser, the data will reset.  
 */
-function removeArtist( /*Your Code Here*/ ) {
-    /*Your Code Here*/
+function removeArtist(arr, index) {
+    arr.shift(index);
+    return arr.length;
 }
 
+console.log(JSON.stringify(removeArtist(artists, 0)));
 
 /**
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 6: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
@@ -250,8 +261,9 @@ bio: Add 1-2 sentences (or use lorem ipsum)
 
 At the end, this function should return the new array with information added"*/
 
-function addArtist( /*Your Code Here*/ ) {
-    /*Your Code Here*/
+function addArtist(arr) {
+    arr.push();
+    return arr;
 }
 
 
@@ -265,12 +277,18 @@ and returns an array with names of artists who painted more than 100 paintings.
 
 For example lotsOfArt(artists); will return ["Amedeo Modigliani", "Rene Magritte", ..."Albrecht Dürer"]*/
 
-function lotsOfArt( /*Your Code Here*/ ) {
-    /*Your Code Here*/
+function lotsOfArt(arr) {
+    let moreThan100 = [];
+    for (let index = 0; index < arr.length; index++) {
+        const element = arr[index];
+        if (element.paintings > 100) {
+            moreThan100.push(element.name);
+        }
+    }
+    return moreThan100;
 }
 
-
-
+console.log(JSON.stringify(lotsOfArt(artists)));
 
 // 🎨🎨 STRETCH 🎨🎨//
 /* 💪💪💪💪💪💪 STRETCH 1: 💪💪💪💪💪💪 
@@ -294,7 +312,7 @@ The function should console.log 50 chunks of HTML code that match the structure 
 
 ‼️ You do **NOT** need to get these to display on your page, but you can copy and paste the result into your HTML file if you'd like to see what that would look like. */
 
-function getHTML( /* Code here */ ) {
+function getHTML(data) {
 
     /* Code here */
 
