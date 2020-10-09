@@ -23,9 +23,20 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. How would you describe acessibility on the web to someone new to programming?
+
+Accessibility means that everyoneone on almost any device should be able to access the web with ease. This means that sites that were built with desktop first in mind should be able to adjust to work on a mobile device, and vice versa. It also means that it is usuable for those with disabilities, such as those with color and complete blindness and loss of hearing, by adapting sites to be read by screen readers with alt in images and semantically accurate tags and having colors have there visual counterparts available for those with color blindness.
+
 2. Talk about 3 different things you can do to ensure your website is accessible. 
+
+Three things you can do to make your site accessible is add media queries to the CSS to ensure the site adjust when being used on a desktop or mobile device, ensure that semantic tags are being used so screen readers can accurately read the site, and ensure colors have counterparts so that those with color blindness can see or read what is being displayed properly.
+
 3. How would you explain the concept of a variable to someone new to programming?
+
+Variables are the way that JavaScript is able maintain data in code, by storing it, changing it, and using it. They help in ensuring that when a function recieves arguments that the function runs properly to get the results intended.
+
 4. What is the purpose of using functions in code?
+
+Functions in JavaScript allow us to repeat sections of code, so that they can be used over and over again when called, and give the results written within the code of the functions.
 
 You are expected to be able to answer questions in these areas. Your responses contribute to your Sprint Challenge grade. 
 
