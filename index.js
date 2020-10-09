@@ -219,7 +219,10 @@ function get20s(arr) {
     let diedIn20s = [];
     for (let index = 0; index < arr.length; index++) {
         const element = arr[index];
-        if (element.years >= 1900 && element.years <= 2000) {
+        let years = element.years.split('-'); // breaks years into two parts
+        let beginYear = parseInt(years[0], 10); // change string into number
+        let endYear = parseInt(years[0], 10);
+        if (beginYear >= 1900 && endYear <= 2000) {
             diedIn20s.push(element.name);
         }
 
@@ -241,11 +244,12 @@ Create a function called `removeArtist` that takes two arguments:
  * Note that sucessfully invoking this function multiple times without refreshing your browser will continuously remove artists from the array until there are none left. If you refresh your browser, the data will reset.  
 */
 function removeArtist(arr, index) {
-    arr.shift(index);
+    arr.splice(index, 1);
+    console.log(arr.length);
     return arr.length;
 }
 
-console.log(JSON.stringify(removeArtist(artists, 0)));
+
 
 /**
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 6: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
@@ -262,11 +266,21 @@ bio: Add 1-2 sentences (or use lorem ipsum)
 At the end, this function should return the new array with information added"*/
 
 function addArtist(arr) {
-    arr.push();
+    let artist = {
+        "id": arr.length,
+        "name": "Stone Cogswell",
+        "years": "1998 - 2020",
+        "genre": "Primitivism,Surrealism",
+        "nationality": "USA",
+        "bio": "information is redacted",
+        "wikipedia": "",
+        "paintings": 2000000
+    };
+    arr.push(artist);
     return arr;
 }
 
-
+console.log(JSON.stringify(addArtist(artists)));
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 7: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 Create a function called lotsOfArt() that takes one argument: 
@@ -312,23 +326,45 @@ The function should console.log 50 chunks of HTML code that match the structure 
 
 ‼️ You do **NOT** need to get these to display on your page, but you can copy and paste the result into your HTML file if you'd like to see what that would look like. */
 
-function getHTML(data) {
-
-    /* Code here */
-
+function getHTML(arr) {
+    let result = ``;
+    for (let index = 0; index < arr.length; index++) {
+        const artist = arr[index];
+        result += `<div id="artist">`;
+        result += `<div class="image">`;
+        result += `<img src="${artist.img}"/>`;
+        result += `</div>`;
+        result += `<div class = "name">`;
+        result += `<a href="${artist.wikipedia}"> ${artist.name}</a>`;
+        result += `</div>`;
+        result += `<div class = "bio">${artist.bio}</div>`;
+        result += `</div>`;
+    }
+    return result;
 }
 
+console.log(JSON.stringify(getHTML(artists)));
 
 /* 💪💪💪💪💪💪 STRETCH 2: 💪💪💪💪💪💪
-Create a function called `randomize` that takes a data array as an argument and returns a the same array in a randomized order. */
+Create a function called `
+        randomize ` that takes a data array as an argument and returns a the same array in a randomized order. */
 
-function randomize( /* Code here */ ) {
-
-    /* Code here */
-
+function randomize(arr) {
+    let indexes = []; // use this array to keep track of the indexes we've already used
+    let randomArtists = [];
+    while (indexes.length < arr.length) {
+        let randomIndex = Math.floor(Math.random() * arr.length);
+        if (!indexes.includes(randomIndex)) { // if we haven't used this index before, then mark it used and add the random artist
+            indexes.push(randomIndex);
+            let randomArtist = arr[randomIndex];
+            randomArtists.push(randomArtist);
+        }
+    }
+    console.log(JSON.stringify(indexes));
+    return randomArtists;
 }
 
-
+console.log(JSON.stringify(randomize(artists)));
 /* 💪💪💪💪💪💪 STRETCH 3: 💪💪💪💪💪💪
 Use advanced array methods (.map, .reduce, .filer) to refactor your MVP code (create an array of all artists born in the 1900s with .filter, for example) */
 
